@@ -12,7 +12,7 @@ docker-compose -f $DOCKER_COMPOSE_FILE up --build "${SERVICES[@]}"
 echo "Playwright tests completed. Collecting logs and artifacts..."
 
 for SERVICE in "${SERVICES[@]}"; do
-  docker cp "${SERVICE}:/app/test-results/" "./test-results/${SERVICE}/"
+  docker cp "${SERVICE}:/app/test_results/" "./test_results/${SERVICE}/"
   docker logs "${SERVICE}" > "./logs/${SERVICE}.log"
 done
 
