@@ -7,18 +7,20 @@ services:
     container_name: playwright_chromium_desktop
     environment:
       - PYTHONPATH=.
-      - BROWSER=chromium
-      - DEVICE_TYPE=desktop
-    command: pytest test_site.py --browser chromium --device-type desktop --html=report.html
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: pytest test_site.py --browser firefox --device-type desktop --html=report.html
 
   # Firefox desktop test
   playwright-firefox-desktop:
     build: .
-    container_name: playwright_firefox_desktop --html=report.html
+    container_name: playwright_firefox_desktop
     environment:
       - PYTHONPATH=.
-      - BROWSER=firefox
-      - DEVICE_TYPE=desktop
+    volumes:
+      - .:/app
+    working_dir: /app
     command: pytest test_site.py --browser firefox --device-type desktop --html=report.html
 
   # Webkit desktop test
@@ -27,8 +29,9 @@ services:
     container_name: playwright_webkit_desktop
     environment:
       - PYTHONPATH=.
-      - BROWSER=webkit
-      - DEVICE_TYPE=desktop
+    volumes:
+      - .:/app
+    working_dir: /app
     command: pytest test_site.py --browser webkit --device-type desktop --html=report.html
 
   # Chrome mobile test
@@ -37,8 +40,9 @@ services:
     container_name: playwright_chromium_mobile
     environment:
       - PYTHONPATH=.
-      - BROWSER=chromium
-      - DEVICE_TYPE=mobile
+    volumes:
+      - .:/app
+    working_dir: /app
     command: pytest test_site.py --browser chromium --device-type mobile --html=report.html
 
   # Firefox mobile test
@@ -47,8 +51,9 @@ services:
     container_name: playwright_firefox_mobile
     environment:
       - PYTHONPATH=.
-      - BROWSER=firefox
-      - DEVICE_TYPE=mobile
+    volumes:
+      - .:/app
+    working_dir: /app
     command: pytest test_site.py --browser firefox --device-type mobile --html=report.html
 
   # Webkit mobile test
@@ -57,6 +62,7 @@ services:
     container_name: playwright_webkit_mobile
     environment:
       - PYTHONPATH=.
-      - BROWSER=webkit
-      - DEVICE_TYPE=mobile
+    volumes:
+      - .:/app
+    working_dir: /app
     command: pytest test_site.py --browser webkit --device-type mobile --html=report.html
