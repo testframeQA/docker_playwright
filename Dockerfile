@@ -8,5 +8,3 @@ RUN pip install -r requirements.txt
 COPY . .
 
 RUN playwright install --with-deps
-
-ENTRYPOINT ["pytest"]

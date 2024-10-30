@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    command: pytest test_site.py --browser firefox --device-type desktop --html=report.html
+    command: pytest test_site.py --browser chromium --device-type desktop --html=report.html
 
   # Firefox desktop test
   playwright-firefox-desktop:
