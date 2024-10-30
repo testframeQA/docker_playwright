@@ -1,7 +1,6 @@
-import pytest
 from playwright.sync_api import Page
 
-TEST_URL = "https://brgoldsmith.com"
+test_url = "https://brgoldsmith.com"
 
 def test_load_site(browser_name, device_type, playwright):
     browser = playwright[browser_name].launch()
@@ -17,15 +16,15 @@ def test_load_site(browser_name, device_type, playwright):
     context.tracing.start(screenshots=True, snapshots=True)
 
     page = context.new_page()
-    response = page.goto(TEST_URL)
+    response = page.goto(test_url)
     
-    # Ensure that the page loaded successfully
+    # Confirm pageload successful
     assert response.status == 200
 
     # Take a screenshot
     page.screenshot(path=f"screenshots/{browser_name}_{device_type}_screenshot.png")
 
-    # Stop tracing and save the trace file
+    # Stop tracing
     context.tracing.stop(path=f"traces/{browser_name}_{device_type}_trace.zip")
 
     context.close()
